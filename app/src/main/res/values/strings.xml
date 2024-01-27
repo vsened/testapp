@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">TestApp</string>
+    <string name="meal_image_description">Meal image</string>
+    <string name="title_label">Title</string>
+    <string name="favorite_icon_description">favorite icon</string>
+    <string name="recipe_title">Рецепты</string>
+    <string name="favorites_title">Избранное</string>
+    <string name="navigation_icon_label">Navigation Icon</string>
+    <string name="favorite_icon">Add to favorite icon</string>
+    <string name="share_icon_description">Share icon</string>
+    <string name="download_icon_description">Download icon</string>
+    <string name="edit_button_description">Edit button</string>
+    <string name="save_button_description">Save button</string>
+    <string name="note_label">Заметки</string>
+    <string name="create_notification_button_description">Create notification button</string>
+    <string name="notification_title">Время готовить!</string>
+    <string name="notification_text">Вы просили, мы напоминаем!!</string>
+    <string name="is_favorite_icon_description">Favorite icon</string>
+    <string name="dialog_text">Через сколько вам напомнить?</string>
+    <string name="dialod_title">Напоминание</string>
+</resources>
