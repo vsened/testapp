@@ -118,10 +118,30 @@ fun DetailFavoritesScreen(
             time.value = setter[which]
         }
         .setPositiveButton("Установить") { _, _ ->
-            shouldSetNotification.value = true
+            val alarmManager = context
+                .getSystemService(ALARM_SERVICE) as AlarmManager
+            val calendar = Calendar.getInstance()
+            when (time.value) {
+                NotificationTime.MINUTES -> calendar.add(Calendar.MINUTE, 15)
+                NotificationTime.HOUR -> calendar.add(Calendar.HOUR, 1)
+                NotificationTime.DAY -> calendar.add(Calendar.HOUR, 24)
+                NotificationTime.WEEK -> calendar.add(Calendar.HOUR, 168)
+            }
+            val intent = AlarmReceiver.newIntent(context)
+            val pendingIntent = PendingIntent.getBroadcast(
+                context,
+                100,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+            alarmManager.setExact(
+                AlarmManager.RTC_WAKEUP,
+                calendar.timeInMillis,
+                pendingIntent
+            )
         }
         .setNegativeButton("Отмена") { _, _ ->
-            shouldSetNotification.value = false
+
         }
     Scaffold(
         topBar = {
@@ -148,29 +168,7 @@ fun DetailFavoritesScreen(
                 actions = {
                     IconButton(
                         onClick = {
-                            val alarmManager = context
-                                .getSystemService(ALARM_SERVICE) as AlarmManager
-                            val calendar = Calendar.getInstance()
                             builder.create().show()
-                            if (shouldSetNotification.value) {
-                                when (time.value) {
-                                    NotificationTime.MINUTES -> calendar.add(Calendar.MINUTE, 15)
-                                    NotificationTime.HOUR -> calendar.add(Calendar.HOUR, 1)
-                                    NotificationTime.DAY -> calendar.add(Calendar.HOUR, 24)
-                                    NotificationTime.WEEK -> calendar.add(Calendar.HOUR, 168)
-                                }
-                                val intent = AlarmReceiver.newIntent(context)
-                                val pendingIntent = PendingIntent.getBroadcast(
-                                    context,
-                                    100,
-                                    intent,
-                                    PendingIntent.FLAG_UPDATE_CURRENT
-                                )
-                                alarmManager.setExact(
-                                    AlarmManager.RTC_WAKEUP,
-                                    calendar.timeInMillis,
-                                    pendingIntent)
-                            }
                         }
                     ) {
                         Icon(
