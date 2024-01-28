@@ -51,6 +51,7 @@ import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.vsened.testapp.R
+import com.vsened.testapp.presentation.screens.Screen
 import com.vsened.testapp.presentation.ui.theme.cruinn
 
 
@@ -77,7 +78,7 @@ fun DetailScreen(
                 navigationIcon = {
                     IconButton(
                         onClick = {
-                            navController.popBackStack()
+                            navController.navigate(Screen.MainScreen.route)
                         }
                     ) {
                         Icon(

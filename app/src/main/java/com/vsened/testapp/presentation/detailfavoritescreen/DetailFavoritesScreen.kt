@@ -117,7 +117,7 @@ fun DetailFavoritesScreen(
         .setSingleChoiceItems(arrayOf("15 минут", "1 час", "1 день", "1 неделя"), 0) { _, which ->
             time.value = setter[which]
         }
-        .setPositiveButton("Установить") { _, _ ->
+        .setPositiveButton(stringResource(R.string.set_notification_label)) { _, _ ->
             val alarmManager = context
                 .getSystemService(ALARM_SERVICE) as AlarmManager
             val calendar = Calendar.getInstance()

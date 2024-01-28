@@ -18,4 +18,5 @@
     <string name="is_favorite_icon_description">Favorite icon</string>
     <string name="dialog_text">Через сколько вам напомнить?</string>
     <string name="dialod_title">Напоминание</string>
+    <string name="set_notification_label">Установить</string>
 </resources>
